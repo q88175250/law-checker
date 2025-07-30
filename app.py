@@ -1,5 +1,5 @@
 from config import TRACKED_LAWS
-from utils.notify import send_notification
+from utils.email_notify import send_email_notification
 import requests, json, os
 
 DATA_FILE = "data/last_versions.json"
@@ -37,7 +37,7 @@ def main():
     save_versions(current_versions)
 
     if updated:
-        send_notification("\n".join(updated))
+        send_email_notification("📢 法規查核結果", "\n".join(updated))
     else:
         print("✅ 無法規更新")
 
